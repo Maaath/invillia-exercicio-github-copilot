@@ -20,14 +20,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const spotsLeft = details.max_participants - details.participants.length;
 
-        // Monta a lista de participantes inscritos
+        // Lista de inscritos melhorada
         let participantsHtml = "";
         if (details.participants.length > 0) {
           participantsHtml = `
-            <p><strong>Participants:</strong></p>
-            <ul>
-              ${details.participants.map(email => `<li>${email}</li>`).join("")}
-            </ul>
+            <div class="participants-list">
+              <p>
+                <strong>Participants (${details.participants.length}):</strong>
+              </p>
+              <div class="participants-emails">
+                ${details.participants.map(email => `<span class="participant-email">${email}</span>`).join(", ")}
+              </div>
+            </div>
           `;
         } else {
           participantsHtml = `<p><strong>Participants:</strong> Nenhum inscrito ainda.</p>`;
